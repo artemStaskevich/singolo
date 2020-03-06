@@ -1,0 +1,200 @@
+@font-face {
+    font-family: Lato;
+    src: url(assets/Lato-Regular.ttf);
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: Lato;
+    src: url(assets/Lato-Light.ttf);
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: Lato;
+    src: url(assets/Lato-Black.ttf);
+    font-weight: 900;
+    font-style: normal;
+}
+@font-face {
+    font-family: Lato;
+    src: url(assets/Lato-Bold.ttf);
+    font-weight: 700;
+    font-style: normal;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: Lato, sans-serif;
+	box-sizing: border-box;
+}
+.container {
+	max-width: 1020px;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+
+.quote .container {
+    height: 648px;
+    padding: 35px 40px 40px 40px;
+    background-color: #f06c64;
+    color: #f0d8d9;
+	
+  box-shadow: 0px 6px 0px #ea676b;
+  position: relative;
+  z-index: 9;
+}
+.quote h2 {
+  padding-top: 25px;
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: -0.3px;
+}
+.quote-description {
+  margin-bottom: 14px;
+  padding-top: 17px;
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: -0.17px;
+  line-height: 1.7em;
+  text-align: justify;
+}
+.contacts {
+  display: flex;
+  justify-content: space-between;
+  
+  background-color: #f06c64;
+}
+.contacts-form {
+  max-width: 618px;
+  padding-top: 30px;
+}
+.contacts-form-field {
+  width: 100%;
+  border: none;
+  padding: 10px 14px 12px;
+  border-radius: 5px;
+  background-color: #d6564f;
+  margin-bottom: 16px;
+}
+.contacts-form-field::placeholder {
+  font-family: Lato;
+  font-weight: 200;
+  line-height: 2.0rem;
+  color: #f48c8f;
+}
+input:invalid:not(:placeholder-shown) {
+  background-color: orange;
+}
+.contacts-form-textarea {
+  height: 202px;
+  letter-spacing: -0.3px;
+  padding: 2px 14px 13px;
+}
+.contacts-information {
+  max-width: 301px;
+  color: #f0d8d9;
+  padding-top: 28px;
+}
+.contacts-information h4 {
+  font-size: 19px;
+  font-weight: 900;
+  letter-spacing: -0.3px;
+}
+.contacts-information-description {
+  margin-bottom: 18px;
+  padding-top: 7px;
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: -0.14px;
+  line-height: 1.8em;  
+  text-align: justify;
+}
+.contacts-information-links {
+  padding-top: 2px;	
+}
+.contacts-information-links a {
+  display: inherit;
+  margin: 1px;
+  padding-top: 5px;
+  text-decoration: none;
+  color: #f0d8d9;
+  font-size: 13px;
+}
+.contacts-information-links a:hover {
+  text-decoration: underline;
+  color: white;
+}
+.contacts-information-links-location img {
+  width: 20px;
+  height: 11px;
+  padding-left: 2px;
+  padding-right: 8px;
+}
+
+.contacts-information-links-phone img {
+  width: 20px;
+  height: 11px;
+  padding-left: 2px;
+  padding-top: 0.5px;
+  padding-right: 8px;
+}
+
+.contacts-information-links-mail img{
+  width: 20px;
+  height: 13px;
+  margin-top: 1px;
+  padding-left: 1px;
+  padding-right: 7px;
+}
+.contacts-information-links-location span{
+  letter-spacing: -0.61px;
+  padding-left: 3px;
+}
+
+.contacts-information-links-phone span{
+  letter-spacing: -0.64px;
+  padding-left: 2px;
+}
+
+.contacts-information-links-mail span{
+  position: relative;
+  top: -3px;
+  letter-spacing: -0.54px;
+  padding-left: 2px;
+}
+.contacts-form-button {
+  cursor: pointer;
+  height: 22px;
+  width: 100px;
+  font-size: 12px;
+  font-weight: 400;
+  border: none;
+  border-radius: 7px;
+  border-color: #fff;
+  background-color: #d6564f;
+  color: #fff;
+  text-align: center;
+}
+.footer .container {
+  height: 76px;
+  padding: 43px 39px 40px 40px;
+  background-color: #2d303a;
+  color: #f0d8d9;
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-description {
+  font-size: 12px;
+  font-weight: 400;
+  color: #666d89;
+}
+.footer-social-icons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  width: 155px;
+}
