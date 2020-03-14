@@ -76,10 +76,16 @@ h1 span {
   content: "·";
 }
 .navigation li:first-child {
-  color: #f06c64;
   padding-left: 18px;
 }
-.navigation li:hover {
+.navigation a {
+  text-decoration: none;
+  color: #ffffff;
+}
+.navigation .active a {
+  color: #f06c64;
+}
+.navigation a:hover {
   color: #f06c64;
   cursor: pointer;
 }
@@ -91,6 +97,7 @@ h1 span {
 .slider .container {
   background-color: #f06c64;
   height: 600px;
+  overflow: hidden;
 
   box-shadow: 0px 6px 0px #f06c64;
   position: relative;
@@ -115,9 +122,41 @@ h1 span {
   right: 110px;
   top: 178px;
 }
+.horizontal-screen {
+  background: black;
+  width: 334px;
+  height: 189px;
+  left: 484px;
+  position: absolute;
+  top: 194px;
+  border-radius: 5px;
+  position: absolute; 
+}
 .slider .vertical {
   left: 110px;
   top: 57px;
+}
+.vertical-screen {
+  background: black;
+  width: 188px;
+  height: 333px;
+  left: 126px;
+  position: absolute;
+  top: 124px;
+  border-radius: 5px;
+}
+.hidden {
+  display: none;
+}
+.carousel {
+  left: 0px;
+  top: 6px;
+}
+.item {
+  display: none;
+}
+.item.active {
+  display: block;
 }
 
 .services .container {
@@ -242,6 +281,11 @@ h1 span {
 }
 .images img:nth-child(1n+13) {
   display: none;
+}
+.images .active-img {
+  border: #F06C64;
+  border-style: solid;
+  border-width: 5px; 
 }
 
 .about-us .container {
@@ -472,4 +516,28 @@ input:invalid:not(:placeholder-shown) {
 }
 .footer-social-icons img:hover{
   transform: scale(1.1);
+}
+
+.popup-cover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9000;
+  width: 100%;
+  height: 100%;
+  background-color: gray;
+  opacity: 0.3;  
+}
+.popup-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 9999;
+  background-color: white;
+  width: 300px;
+  height: 150px;
+  padding: 10px;
+}
+.popup-message p {
+  padding-top: 5px;
 }
