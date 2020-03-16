@@ -15,6 +15,8 @@ window.onload = function() {
 	addFormHandler();
 
 	addPopupCloseHandler();
+
+	addTextareaLimit(30);
 };
 
 const addNavClickHandler = () => {
@@ -124,6 +126,14 @@ const createPopupDate = (data) => {
 const addPopupCloseHandler = () => {
 	document.getElementById('close').addEventListener('click', function() {
 		document.querySelector('.popup').classList.add('hidden');
+	});
+};
+
+const addTextareaLimit = (limit) => {
+	document.querySelector('.contacts-form-textarea').addEventListener('blur', function(event) {
+		if (event.target.value.length > limit) {
+			event.target.value = event.target.value.substr(0, limit);
+		}	
 	});
 };
 
