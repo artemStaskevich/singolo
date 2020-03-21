@@ -2,6 +2,8 @@ window.onload = function() {
 
 	addNavClickHandler();
 
+	addNavScrollHandler();
+
 	addHorizontalPhoneClickHandler();
 
 	addVerticalPhoneClickHandler();
@@ -26,18 +28,43 @@ const addNavClickHandler = () => {
 	});
 };
 
-const addHorizontalPhoneClickHandler = () => {
-	document.querySelector('.horizontal').addEventListener('click', function() {
-		var screen = document.querySelector('.horizontal-screen');
+const addNavScrollHandler = () => {
+	document.addEventListener('scroll', onScroll);
+};
 
-		changePhoneScreenStatus(screen);
+const onScroll = () => {
+	var currentPosition = window.scrollY,
+		sections = document.querySelectorAll('section > div.container'),
+		headerHeight = document.querySelector('.header > div').offsetHeight;
+	
+	sections.forEach((el) => {
+		if ((el.parentElement.offsetTop - headerHeight) <= currentPosition && (el.parentElement.offsetTop + el.parentElement.offsetHeight - headerHeight) > currentPosition) {
+			document.querySelectorAll('#navigation-bar a').forEach((a) => {
+				a.parentElement.classList.remove('active');
+				if (el.parentElement.getAttribute('id') === a.getAttribute('href').substring(1)) {
+					a.parentElement.classList.add('active');
+				}
+			});
+		}
 	});
 };
 
-const addVerticalPhoneClickHandler = () => {
-	document.querySelector('.vertical').addEventListener('click', function() {
-		var screen = document.querySelector('.vertical-screen');
+const addHorizontalPhoneClickHandler = () => {
+	var screen = document.querySelector('.horizontal-screen');
+	document.querySelector('.horizontal').addEventListener('click', function() {
+		changePhoneScreenStatus(screen);
+	});
+	document.querySelector('.horizontal-screen').addEventListener('click', function() {
+		changePhoneScreenStatus(screen);
+	});	
+};
 
+const addVerticalPhoneClickHandler = () => {
+	var screen = document.querySelector('.vertical-screen');
+	document.querySelector('.vertical').addEventListener('click', function() {
+		changePhoneScreenStatus(screen);
+	});
+	document.querySelector('.vertical-screen').addEventListener('click', function() {
 		changePhoneScreenStatus(screen);
 	});
 };
@@ -88,11 +115,15 @@ const changePortfolioImageBorder = (event) => {
 
 const addSlider = () => {
 	document.querySelector('.arrow-left').addEventListener('click', function() {
-		previousItem(currentItem);
+		if (isEnabled) {
+			previousItem(currentItem);
+		}
 	});
 	
 	document.querySelector('.arrow-right').addEventListener('click', function() {
-		nextItem(currentItem);
+		if (isEnabled) {
+			nextItem(currentItem);
+		}
 	});
 };
 
@@ -125,6 +156,7 @@ const createPopupDate = (data) => {
 
 const addPopupCloseHandler = () => {
 	document.getElementById('close').addEventListener('click', function() {
+		document.querySelector('.contacts-form').reset();
 		document.querySelector('.popup').classList.add('hidden');
 	});
 };
@@ -139,20 +171,37 @@ const addTextareaLimit = (limit) => {
 
 // Slider
 var items = document.getElementById('slider').querySelectorAll('.item'),
-	currentItem = 0;
+	currentItem = 0,
+	isEnabled = true;
 
 const changeCurrentItem = (n) =>  {
 	currentItem = (n + items.length) % items.length;
 };
+const  hideItem = (direction) => {
+	isEnabled = false;
+	items[currentItem].classList.add(direction);
+	items[currentItem].addEventListener('animationend', function() {
+		this.classList.remove('active', direction);
+	});
+}
+
+const showItem = (direction) =>  {
+	items[currentItem].classList.add('next', direction);
+	items[currentItem].addEventListener('animationend', function() {
+		this.classList.remove('next', direction);
+		this.classList.add('active');
+		isEnabled = true;
+	});
+}
 
 const nextItem = (n) => {
-	items[currentItem].classList.remove('active');
+	hideItem('to-left');
 	changeCurrentItem(n + 1);
-	items[currentItem].classList.add('active');
+	showItem('from-right');
 };
 
 const previousItem = (n) => {
-	items[currentItem].classList.remove('active');
+	hideItem('to-right');
 	changeCurrentItem(n - 1);
-	items[currentItem].classList.add('active');
+	showItem('from-left');
 };
